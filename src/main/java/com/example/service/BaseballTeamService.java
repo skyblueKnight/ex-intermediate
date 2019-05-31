@@ -24,7 +24,7 @@ public class BaseballTeamService {
 	 * 
 	 * @return 野球チーム情報一覧
 	 */
-	public List<BaseballTeam> findAll() {
+	public List<BaseballTeam> showList() {
 		return repository.findAll();
 	}
 
@@ -34,7 +34,7 @@ public class BaseballTeamService {
 	 * @param id 検索するID
 	 * @return 取得した野球チーム情報
 	 */
-	public BaseballTeam load(int id) {
+	public BaseballTeam showDetail(int id) {
 		return repository.load(id);
 	}
 

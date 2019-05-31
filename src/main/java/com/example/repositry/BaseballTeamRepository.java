@@ -46,7 +46,8 @@ public class BaseballTeamRepository {
 	public List<BaseballTeam> findAll() {
 
 		String sql = "SELECT id, team_name, headquarters, inauguration, history, league_name "
-				+ " FROM teams;";
+				+ " FROM teams"
+				+ " ORDER BY inauguration;";
 		List<BaseballTeam> baseballTeamList = template.query(sql, BASEBALL_TEAM_ROW_MAPPER);
 		
 		System.out.println(baseballTeamList);

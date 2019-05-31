@@ -33,7 +33,7 @@ public class BaseBallTeamController {
 	@RequestMapping("")
 	public String index(Model model) {
 		
-		List<BaseballTeam> baseballTeamList = service.findAll();
+		List<BaseballTeam> baseballTeamList = service.showList();
 		model.addAttribute("baseballTeamList",baseballTeamList);
 		
 		return "baseball-team-list";
@@ -49,8 +49,8 @@ public class BaseBallTeamController {
 	@RequestMapping("/get-details")
 	public String getDetails(int id,Model model) {
 		
-		//BaseballTeam baseballTeam = service.load(id);
-		//model.addAttribute("baseballTeam",baseballTeam);
+		BaseballTeam baseballTeam = service.showDetail(id);
+		model.addAttribute("baseballTeam",baseballTeam);
 		
 		return "baseball-team-details";
 	}
