@@ -25,8 +25,7 @@ public class BaseBallTeamController {
 	
 	
 	/**
-	 * 野球チーム一覧表示画面に遷移する.<br>
-	 * 野球チーム情報一覧を取得してから表示画面に遷移する。
+	 * 野球チーム情報一覧を取得してから、チーム一覧表示画面に遷移する.
 	 * 
 	 * @param model モデル
 	 * @return チーム一覧表示画面
@@ -40,5 +39,20 @@ public class BaseBallTeamController {
 		return "baseball-team-list";
 	}
 	
+	
+	/**
+	 * 野球チームの詳細情報を取得してから、詳細表示画面に遷移する.
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/get-details")
+	public String getDetails(int id,Model model) {
+		
+		BaseballTeam baseballTeam = service.load(id);
+		model.addAttribute("baseballTeam",baseballTeam);
+		
+		return "baseball-team-details";
+	}
 	
 }
