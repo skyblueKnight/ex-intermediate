@@ -30,7 +30,7 @@ public class BaseballTeamRepository {
 		baseballTeam.setHeadquarters(rs.getString("headquarters"));
 		baseballTeam.setInauguration(rs.getString("inauguration"));
 		baseballTeam.setHistory(rs.getString("history"));
-		baseballTeam.setLeagueName(rs.getString("leagueName"));
+		baseballTeam.setLeagueName(rs.getString("league_name"));
 
 		return baseballTeam;
 	};
@@ -48,6 +48,8 @@ public class BaseballTeamRepository {
 		String sql = "SELECT id, team_name, headquarters, inauguration, history, league_name "
 				+ " FROM teams;";
 		List<BaseballTeam> baseballTeamList = template.query(sql, BASEBALL_TEAM_ROW_MAPPER);
+		
+		System.out.println(baseballTeamList);
 
 		return baseballTeamList;
 	}

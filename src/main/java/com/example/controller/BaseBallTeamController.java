@@ -49,8 +49,8 @@ public class BaseBallTeamController {
 	@RequestMapping("/get-details")
 	public String getDetails(int id,Model model) {
 		
-		BaseballTeam baseballTeam = service.load(id);
-		model.addAttribute("baseballTeam",baseballTeam);
+		//BaseballTeam baseballTeam = service.load(id);
+		//model.addAttribute("baseballTeam",baseballTeam);
 		
 		return "baseball-team-details";
 	}
