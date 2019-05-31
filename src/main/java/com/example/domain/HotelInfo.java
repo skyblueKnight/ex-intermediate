@@ -6,7 +6,7 @@ package com.example.domain;
  * @author momoyo kanie
  *
  */
-public class HotelInfoDomain {
+public class HotelInfo {
 	
 	/** ID */
 	private Integer id;
