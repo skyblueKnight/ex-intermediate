@@ -19,42 +19,39 @@ import com.example.domain.BaseballTeam;
  */
 @Repository
 public class BaseballTeamRepository {
-	
+
 	/**
-	 * BaseBallTeamオブジェクトを返すRowMapper. 
+	 * BaseBallTeamオブジェクトを返すRowMapper.
 	 */
-	private final static RowMapper<BaseballTeam> BASEBALL_TEAM_ROW_MAPPER = (rs,i) ->{
+	private final static RowMapper<BaseballTeam> BASEBALL_TEAM_ROW_MAPPER = (rs, i) -> {
 		BaseballTeam baseballTeam = new BaseballTeam();
 		baseballTeam.setId(rs.getInt("id"));
-		baseballTeam.setTeamName(rs.getString("team_name"));		
-		baseballTeam.setHeadquarters(rs.getString("headquarters"));		
-		baseballTeam.setInauguration(rs.getString("inauguration"));		
-		baseballTeam.setHistory(rs.getString("history"));		
-		baseballTeam.setLeagueName(rs.getString("leagueName"));		
-		
+		baseballTeam.setTeamName(rs.getString("team_name"));
+		baseballTeam.setHeadquarters(rs.getString("headquarters"));
+		baseballTeam.setInauguration(rs.getString("inauguration"));
+		baseballTeam.setHistory(rs.getString("history"));
+		baseballTeam.setLeagueName(rs.getString("leagueName"));
+
 		return baseballTeam;
 	};
-	
+
 	@Autowired
 	private NamedParameterJdbcTemplate template;
-	
 
-	
 	/**
 	 * 全件検索を行う.
 	 * 
 	 * @return 野球チーム情報一覧
 	 */
-	public List<BaseballTeam> findAll(){
-		
-		String sql ="SELECT id, team_name, headquarters, inauguration, history, league_name "
+	public List<BaseballTeam> findAll() {
+
+		String sql = "SELECT id, team_name, headquarters, inauguration, history, league_name "
 				+ " FROM teams;";
 		List<BaseballTeam> baseballTeamList = template.query(sql, BASEBALL_TEAM_ROW_MAPPER);
-		
+
 		return baseballTeamList;
 	}
-	
-	
+
 	/**
 	 * 主キー検索を行う.
 	 * 
@@ -67,9 +64,8 @@ public class BaseballTeamRepository {
 				+ " WHERE id=:id;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
 		BaseballTeam baseballTeam = template.queryForObject(sql, param, BASEBALL_TEAM_ROW_MAPPER);
-		
+
 		return baseballTeam;
 	}
-	
-	
+
 }
